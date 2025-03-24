@@ -1,0 +1,71 @@
+name: Build & Publish NuGet Package
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v3.1.11
+      with:
+        versionSpec: '6.0.x'
+
+    - name: Determine Version
+      id: version_step
+      uses: gittools/actions/gitversion/execute@v3.1.11
+      with:
+        useConfigFile: true
+        configFilePath: GitVersion.yml
+
+    - name: Setup .NET 9
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+        
+    - name: Install ReportGenerator
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool
+        
+    - name: Run dotnet format
+      run: dotnet format --verify-no-changes --verbosity diagnostic
+
+    - name: Determine Build Version
+      run: echo "BUILD_VERSION=${{ env.fullSemVer }}" >> $GITHUB_ENV
+
+    - name: Determine Build Version for PR
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: echo "BUILD_VERSION=${{ env.majorMinorPatch }}" >> $GITHUB_ENV
+
+    - name: Display Version
+      run: 'echo "Build Version: $BUILD_VERSION"'
+
+    - name: Restore dependencies
+      run: dotnet restore ./ReplicaSet.Aspire.MongoDB/ReplicaSet.Aspire.MongoDB.csproj
+
+    - name: Build Project
+      run: dotnet build ReplicaSet.Aspire.MongoDB/ReplicaSet.Aspire.MongoDB.csproj --configuration Release --no-restore
+
+    - name: Pack NuGet Package
+      run: dotnet pack ReplicaSet.Aspire.MongoDB/ReplicaSet.Aspire.MongoDB.csproj --configuration Release --output ./nupkgs --no-build /p:PackageVersion=$BUILD_VERSION
+
+    - name: Push to nuget.org Packages
+      run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+    - name: Create Git Tag
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: |
+        git tag v$BUILD_VERSION
+        git push origin v$BUILD_VERSION

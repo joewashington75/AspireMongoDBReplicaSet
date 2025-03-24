@@ -42,7 +42,9 @@ Generated\ Files/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
+[Tt]est-[Rr]esult*/
 [Bb]uild[Ll]og.*
+[Cc]overage*/
 
 # NUnit
 *.VisualState.xml
@@ -82,8 +84,6 @@ StyleCopReport.xml
 *.pgc
 *.pgd
 *.rsp
-# but not Directory.Build.rsp, as it configures directory-level build defaults
-!Directory.Build.rsp
 *.sbr
 *.tlb
 *.tli
@@ -398,3 +398,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+.idea/*
+
+__azurite_db_blob*
+
+globalPackagesFolder*
