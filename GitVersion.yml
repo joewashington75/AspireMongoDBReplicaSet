@@ -1,0 +1,29 @@
+mode: ContinuousDeployment # Use 'ContinuousDeployment' or 'ContinuousDelivery' if needed
+next-version: 1.0.0
+assembly-versioning-scheme: MajorMinorPatchTag
+assembly-file-versioning-scheme: MajorMinorPatchTag
+branches:
+  main:
+    regex: ^main$
+  feature:
+    regex: ^feature[/-]
+    source-branches: [develop, main]
+    increment: Patch
+    is-source-branch-for: [develop]
+  release:
+    regex: ^release[/-]
+    source-branches: [develop]
+    increment: None
+    is-source-branch-for: [main]
+    pre-release-weight: 100
+  hotfix:
+    regex: ^hotfix[/-]
+    source-branches: [main]
+    increment: Patch
+    is-source-branch-for: [main]
+  pull-request:
+    regex: ^(pull|pull\-requests|pr)[/-]
+    source-branches: [main, feature, release]
+ignore:
+  sha: []  # Add specific commits to ignore if needed
+update-build-number: true

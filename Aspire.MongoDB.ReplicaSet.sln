@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspire.MongoDB.ReplicaSet", "Aspire.MongoDB.ReplicaSet\Aspire.MongoDB.ReplicaSet.csproj", "{B4F2BDBF-B151-4ED5-B8EA-47F317C5CAFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C00E7BDD-50B3-408B-AA16-7FAB48564EF0}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+		GitVersion.yml = GitVersion.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{475BEE41-95D0-4346-A98E-CDB9AEE23A93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{DE1DBDAA-F8E5-4C7B-9F30-37EC51B459CC}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\nuget-ci.yml = .github\workflows\nuget-ci.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4F2BDBF-B151-4ED5-B8EA-47F317C5CAFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F2BDBF-B151-4ED5-B8EA-47F317C5CAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F2BDBF-B151-4ED5-B8EA-47F317C5CAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F2BDBF-B151-4ED5-B8EA-47F317C5CAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DE1DBDAA-F8E5-4C7B-9F30-37EC51B459CC} = {475BEE41-95D0-4346-A98E-CDB9AEE23A93}
+	EndGlobalSection
+EndGlobal
