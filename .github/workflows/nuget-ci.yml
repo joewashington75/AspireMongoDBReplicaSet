@@ -53,7 +53,7 @@ jobs:
       run: 'echo "Build Version: $BUILD_VERSION"'
 
     - name: Restore dependencies
-      run: dotnet restore Aspire.MongoDB.ReplicateSet/Aspire.MongoDB.ReplicateSet.csproj
+      run: dotnet restore Aspire.MongoDB.ReplicateSet.sln
 
     - name: Build Project
       run: dotnet build Aspire.MongoDB.ReplicateSet/Aspire.MongoDB.ReplicateSet.csproj --configuration Release --no-restore

@@ -19,7 +19,7 @@ public static class MongoReplicaSetBuilderExtensions
     /// <param name="dockerFile">Name of the dockerfile to use</param>
     /// <param name="keyFileName">Name of key file to be used</param>
     /// <returns>A reference to the <see cref="IResourceBuilder{MongoDBServerResource}"/>.</returns>
-    public static IResourceBuilder<MongoDBServerResource> WithReplicaSet(this IResourceBuilder<MongoDBServerResource> builder, string contextPath, string dockerFile, string keyFileName =  "/etc/mongo-keyfile")
+    public static IResourceBuilder<MongoDBServerResource> WithReplicaSet(this IResourceBuilder<MongoDBServerResource> builder, string contextPath, string dockerFile, string keyFileName = "/etc/mongo-keyfile")
     {
         return builder
             .WithDockerfile(contextPath, dockerFile)
