@@ -40,7 +40,7 @@ jobs:
       run: dotnet tool install --global dotnet-reportgenerator-globaltool
         
     - name: Run dotnet format
-      run: dotnet format Aspire.MongoDB.ReplicateSet.sln --verify-no-changes --verbosity diagnostic
+      run: dotnet format --verify-no-changes --verbosity diagnostic
 
     - name: Determine Build Version
       run: echo "BUILD_VERSION=${{ env.fullSemVer }}" >> $GITHUB_ENV
