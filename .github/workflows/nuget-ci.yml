@@ -61,7 +61,7 @@ jobs:
     - name: Pack NuGet Package
       run: dotnet pack Aspire.MongoDB.ReplicaSet/Aspire.MongoDB.ReplicaSet.csproj --configuration Release --output ./nupkgs --no-build /p:PackageVersion=$BUILD_VERSION
 
-    - name: Push to GitHub Packages
+    - name: Push to nuget.org Packages
       run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Create Git Tag
