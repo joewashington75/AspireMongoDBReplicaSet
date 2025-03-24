@@ -10,6 +10,7 @@
         <Company>Washington</Company>
         <Description>Add replica set to MongoDB when using Aspire</Description>
         <RepositoryUrl>https://github.com/joewashington75/AspireMongoDBReplicaSet</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,6 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
         <None Include="Mongo.Dockerfile" CopyToOutputDirectory="PreserveNewest" />
         <Content Include="Mongo.Dockerfile">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
