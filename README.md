@@ -1,4 +1,4 @@
-# Aspire.MongoDB.ReplicaSet
+# ReplicaSet.Aspire.MongoDB
 Provides the ability to create a MongoDB replica set for Aspire.
 
 Use the extension method below to add a replica set to MongoDB when you want to specify the content path, dockerfile to override the location of the key file name

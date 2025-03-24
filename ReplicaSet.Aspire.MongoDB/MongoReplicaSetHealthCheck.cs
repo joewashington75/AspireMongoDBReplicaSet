@@ -2,7 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace Aspire.MongoDB.ReplicaSet;
+namespace ReplicaSet.Aspire.MongoDB;
 
 public class MongoReplicaSetHealthCheck(MongoClientSettings mongoClientSettings) : IHealthCheck
 {
