@@ -14,7 +14,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Aspire.Hosting" Version="9.5.2" />
+        <PackageReference Include="Aspire.Hosting" Version="13.6.5" />
         <PackageReference Include="Aspire.Hosting.MongoDB" Version="9.5.2" />
     </ItemGroup>
 
